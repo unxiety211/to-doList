@@ -14,7 +14,15 @@ function addListItem(e){
   e.preventDefault();  //prevent default event w/ form, submit event
   var newItem=$(".toDoItem").val(); //store the user's input
   itemId += 1;
-  $(".toDo").append("<li class='item-"+itemId+"'>"+newItem+"</li>");
+
+  if(newItem.length<1) {
+    window.alert("This field cant be left empty");
+    return true;
+  }
+  else {
+    $(".toDo").append("<li class='item-"+itemId+"'>"+newItem+"</li>");
+  }
+  
    //use append method to add user's input to the ul as an li
   clearInput();
   toDoCount();
