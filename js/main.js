@@ -110,7 +110,13 @@ $("ul").on("click", ".edit",function(){
   $(this).parent().append('<input class="change" type="text" name="" value=""><button class="new">ok</button>');
   $(".new").on("click", function(){
     var edit= $(this).parent().find(".change").val();
-    $("."+currentEditItem).text(edit);
+    if(edit.length<1) {
+      window.alert("This field cant be left empty")
+      return true;   
+    }
+    else {
+      $("."+currentEditItem).text(edit);
+    }
     $("."+currentEditItem).removeClass("completedItem");
   });
   //$(this).parent().attr("contenteditable","true");
